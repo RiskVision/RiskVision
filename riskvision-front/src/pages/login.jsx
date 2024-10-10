@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import rvlogo from '../logo-white.png'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:5000/login', { user, password });
-      if(response.data.token){
-        alert("Success")
+      const response = await axios.post('https://riskvision-backend.onrender.com/login', { user, password });
+      const { token, role } = response.data;
+      if(token){
+        switch(role){
+          case "admin":
+            navigate("/admin-home")
+            break;
+          case "user":
+            navigate("/home")
+            break;
+          default:
+            setError("Usuario no autorizado")
+            break;
+
+        }
       }
     } catch (err) {
       setError('Error en la autenticación');
-      
+      alert("Usuario o contraseña incorrecto")
     }
   };
 
