@@ -1,0 +1,142 @@
+/* Estilos para la página de usuarios (usuarios.jsx) */
+body {
+  background-color: #201E43; /* Cambia el color de fondo de la página aquí */
+}
+
+.usuarios-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Estilo de cada tarjeta de usuario */
+.usuario-card {
+  background-color: #EEEEEE; /* Cambia el color de fondo de las tarjetas aquí */
+  border: 5px solid #508C9B; /* Borde azul */
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.usuario-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.usuario-card h3 {
+  font-size: 1.2rem;
+  color: #508C9B; /* Cambia el color del texto aquí si es necesario */
+}
+
+.usuario-card p {
+  font-size: 1rem;
+  color: #508C9B;
+}
+
+/* Estilo del botón para crear un usuario */
+.create-button {
+  background-color: #508C9B;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+}
+
+.create-button a:visited {
+  color: white; /* Mantén el color original */
+  text-decoration: none; /* Elimina subrayado si se aplica */
+}
+
+.create-button:hover {
+  background-color: #EEEEEE;
+}
+
+/* Estilos para la página de crear usuario (crearUsuario.jsx) */
+form {
+  background-color: #508C9B; /* Color de fondo del formulario */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto; /* Centra el formulario en la página */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #EEEEEE; /* Cambia el color del texto aquí si es necesario */
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1rem;
+  color: #201E43;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #134B70;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #201E43;
+  background-color: white; /* Cambia el color de fondo de los inputs si es necesario */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #508C9B;
+  outline: none;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+/* Estilos para el botón de crear usuario */
+.submit-button {
+  background-color: #201E43;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px; /* Espacio arriba del botón */
+  display: block; /* Para centrarlo */
+  width: 100%; /* Para que el botón ocupe el ancho completo */
+  text-decoration: none;
+}
+
+.submit-button:hover {
+  background-color: #134B70;
+}
+
+div > input[type="checkbox"] {
+  margin: 5px 10px;
+}
+
