@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse'; // Librería para parsear CSV
 import backgroundImage from '../page-background.jpg';
-
+import BurgerMenu from './BurgerMenu';
 const ActivosDigitales = () => {
   const [data, setData] = useState([]);
   const [fileName, setFileName] = useState('');
@@ -39,6 +39,7 @@ const ActivosDigitales = () => {
       backgroundPosition: 'center',
     }} 
     className="min-h-screen bg-[#201E43] flex flex-col justify-between">
+      <BurgerMenu />
       <div className="text-center mt-8">
         <h1 className="inline-block text-4xl font-bold text-white bg-[#508C9B] p-4 rounded-md">Activos Digitales</h1>
       </div>

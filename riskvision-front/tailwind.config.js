@@ -4,11 +4,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
-        'banner': "url('./banner.png')"
+        'banner': "url('./banner.png')",
+        'homebg': "url('./home-bg.png')"
       },
       colors:{
         '508C9B': '#508C9B',
         '134B70': '#134B70',
+        '201E43': '#201E43',
+        'white': '#EEEEEE'
       }
     },
   },
