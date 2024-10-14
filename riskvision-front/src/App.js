@@ -3,6 +3,7 @@ import Login from './pages/login';
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import Home from './pages/home'
 import AdminHome from './pages/adminHome'
+import AD from './pages/activosDigitales'
 
 function App() {
   return (
