@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse'; // Librería para parsear CSV
-import backgroundImage from '../page-background.jpg'
+import backgroundImage from '../page-background.jpg';
 
 const ActivosDigitales = () => {
   const [data, setData] = useState([]);
@@ -18,7 +18,7 @@ const ActivosDigitales = () => {
   };
 
   useEffect(() => {
-    loadCSV('/data/digital_assets_banking.csv'); // Cambia la ruta según la ubicación de tu archivo CSV
+    loadCSV('/data/IAD.csv'); // Cambia la ruta según la ubicación de tu archivo CSV
   }, []);
 
   const handleFileChange = (e) => {
@@ -32,41 +32,43 @@ const ActivosDigitales = () => {
     });
   };
 
-
   return (
     <div style={{
       backgroundImage: `url(${backgroundImage})`, // Establece la imagen como fondo
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }} 
-    className="min-h-screen bg-[#201E43] flex flex-col justify-between"> {/* Fondo cambiado */}
+    className="min-h-screen bg-[#201E43] flex flex-col justify-between">
       <div className="text-center mt-8">
-        <h1 className="inline-block text-4xl font-bold text-white bg-[#508C9B] p-4 rounded-md">Activos Digitales</h1> {/* Fondo y color del texto del título */}
+        <h1 className="inline-block text-4xl font-bold text-white bg-[#508C9B] p-4 rounded-md">Activos Digitales</h1>
       </div>
 
       <div className="overflow-x-auto mt-8 mx-10">
-        {data.length > 0 ? (
-          <table className="table-auto w-full border border-gray-300 text-black bg-white rounded-md shadow-md">
-            <thead>
-              <tr className="bg-[#508C9B] text-white"> {/* Fondo para el encabezado */}
-                {Object.keys(data[0]).map((key, index) => (
-                  <th key={index} className="px-4 py-2 border">{key}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((row, index) => (
-                <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-200"}> {/* Fondo alterno para las filas */}
-                  {Object.values(row).map((value, i) => (
-                    <td key={i} className="px-4 py-2 border">{value}</td>
+        {/* Contenedor para la tabla con scroll */}
+        <div className="overflow-y-auto h-[72vh]"> {/* Ajusta max-h-96 según tus necesidades */}
+          {data.length > 0 ? (
+            <table className="table-auto w-full border border-gray-300 text-black bg-white rounded-md shadow-md">
+              <thead>
+                <tr className="bg-[#508C9B] text-white">
+                  {Object.keys(data[0]).map((key, index) => (
+                    <th key={index} className="px-4 py-2 border">{key}</th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p className="text-center text-gray-600">No hay archivo cargado.</p>
-        )}
+              </thead>
+              <tbody>
+                {data.map((row, index) => (
+                  <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-200"}>
+                    {Object.values(row).map((value, i) => (
+                      <td key={i} className="px-4 py-2 border">{value}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="text-center text-gray-600">No hay archivo cargado.</p>
+          )}
+        </div>
       </div>
 
       <div className="flex justify-center my-8">
