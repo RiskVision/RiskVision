@@ -1,0 +1,11 @@
+ID,Asset Name,Asset Type,Location,Owner,Confidentiality,Integrity,Availability,Criticality
+1,Web Server,Server,Cloud (AWS),IT Department,High,High,High,Critical
+2,Mobile Application,Software,Cloud (AWS),Development Team,High,Medium,High,Critical
+3,Database Server,Server,Cloud (Azure),DBA Team,High,High,Medium,Critical
+4,Payment Gateway API,Service,Cloud (AWS),Development Team,High,High,High,Critical
+5,Load Balancer,Hardware,Cloud (AWS),Network Team,Medium,High,High,High
+6,Authentication Service,Service,Cloud (AWS),Security Team,High,High,High,Critical
+7,User Data Storage,Database,Cloud (Azure),DBA Team,High,High,Medium,Critical
+8,Internal Admin Panel,Software,Internal,IT Department,High,Medium,Low,Important
+9,Encryption Service,Service,Cloud (AWS),Security Team,High,High,High,Critical
+10,Audit Logs,Data,Cloud (Azure),Compliance Team,High,High,Medium,Important
