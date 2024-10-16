@@ -1,13 +1,15 @@
 import './App.css';
 import Login from './pages/login';
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import Home from './pages/home'
-import AD from './pages/activosDigitales'
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
+import Home from './pages/home';
+import AD from './pages/activosDigitales';
 import CrearUsuario from './pages/crearUsuario';
 import Unauthorized from './pages/unauthorized';
 import Reportes from './pages/documentPage';
 import FullDocumentViewer from './pages/fullDocview';
-import Documentos from './pages/documentPage2'
+import Documentos from './pages/documentPage2';
+import Usuarios from './pages/usuarios';
 
 function App() {
   const documents = [
@@ -51,17 +53,21 @@ function App() {
     },
   ]
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/unauthorized' element={<Unauthorized />} />
-        <Route path='/reportes-pasados' element={<Reportes />} />
-        <Route path="/document/:id" element={<FullDocumentViewer documents={documents} />} />
-        <Route path='/documentos-referencia' element={<Documentos />} />
-        <Route path='/activos-digitales' element={<AD />} />
-      </Routes>
-   </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/unauthorized' element={<Unauthorized />} />
+          <Route path='/reportes-pasados' element={<Reportes />} />
+          <Route path="/document/:id" element={<FullDocumentViewer documents={documents} />} />
+          <Route path='/documentos-referencia' element={<Documentos />} />
+          <Route path='/activos-digitales' element={<AD />} />
+          <Route path='/usuarios' element={<Usuarios />} />
+          <Route path='/crear-usuario' element={<CrearUsuario />} />
+        </Routes>
+    </BrowserRouter>
+   </UserProvider>
   );
 }
 

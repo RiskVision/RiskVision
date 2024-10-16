@@ -73,7 +73,7 @@ function BurgerMenu() {
             <a href="#" className="block px-4 py-2 hover:bg-gray-600">
               Últimos CVEs
             </a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-600">
+            <a onClick={() => redirect('/usuarios')} href="#" className="block px-4 py-2 hover:bg-gray-600">
               Gestión de usuarios
             </a>
           </>

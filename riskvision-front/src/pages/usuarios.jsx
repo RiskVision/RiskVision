@@ -3,13 +3,15 @@ import '../App2.css';  // Importa el archivo CSS
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext'; // Importa el contexto
 import UserProfile from '../User-Profile.png'; // Importa la imagen de perfil
+import BurgerMenu from './BurgerMenu';
 
 const Usuarios = () => {
   const { usuarios } = useContext(UserContext); // Accede a los usuarios desde el contexto
 
   return (
     <div>
-      <h1>Usuarios</h1>
+      <BurgerMenu />
+      <h1 className='h1'>Usuarios</h1>
       <div className="usuarios-container">
         {usuarios.map((usuario, index) => (
           <div key={index} className="usuario-card">
