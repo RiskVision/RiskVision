@@ -7,6 +7,7 @@ import axios from 'axios'; // Import axios
 function Home() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState(''); // State to hold the input value
+  const [response, setResponse] = useState(''); // State to hold the response from the server
 
   const handleRedirect = (url) => {
     navigate(url);
@@ -15,10 +16,11 @@ function Home() {
   // Axios request to handle the prompt submission
   const handlePromptSubmit = async () => {
     try {
-      const response = await axios.post('/your-endpoint', { prompt: inputValue });
-      console.log(response.data); // Handle the response from the server
+      const res = await axios.post('/your-endpoint', { prompt: inputValue });
+      setResponse(res.data); // Update state with the server's response
     } catch (error) {
       console.error('There was an error processing the prompt:', error);
+      setResponse('Error: Could not process your request.');
     }
   };
 
@@ -45,6 +47,13 @@ function Home() {
           placeholder="Enter your message..."
           className="mt-6 px-4 py-2 border rounded-md w-80"
         />
+
+        {/* Display the response below the input field */}
+        {response && (
+          <div className="mt-4 p-4 bg-white border rounded-md w-80 text-center">
+            {response}
+          </div>
+        )}
 
         {/* Action Buttons 60px below the Circle Button, Side by Side */}
         <div className="flex justify-center space-x-4 mt-16">
