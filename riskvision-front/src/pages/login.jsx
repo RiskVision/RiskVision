@@ -7,11 +7,13 @@ const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setLoading(true); // Start loading
+
     try {
       const response = await axios.post('https://riskvision-backend.onrender.com/login', { user, password });
       const { token, role, ...rest } = response.data; // Get token, role, and any other properties
@@ -21,13 +23,15 @@ const Login = () => {
         localStorage.setItem('token', token);
         localStorage.setItem('role', role);
         localStorage.setItem('userData', JSON.stringify(rest)); // Store the rest of the response as user data
-        
+
         // Redirect to home if token is present
         navigate("/home");
       } 
     } catch (err) {
       setError('Error en la autenticación');
       alert("Usuario o contraseña incorrecto");
+    } finally {
+      setLoading(false); // Stop loading after request completes
     }
   };
 
@@ -50,6 +54,7 @@ const Login = () => {
                 onChange={(e) => setUser(e.target.value)}
                 className="mt-1 p-2 w-full border text-black rounded-md"
                 required
+                disabled={loading} // Disable input while loading
               />
             </div>
             <div className="mb-4">
@@ -61,15 +66,25 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 p-2 w-full border text-black rounded-md"
                 required
+                disabled={loading} // Disable input while loading
               />
             </div>
             <button
               type="submit"
-              className="backdrop-blur-md w-full bg-508C9B text-white py-2 rounded-md hover:bg-134B70"
+              className={`backdrop-blur-md w-full bg-508C9B text-white py-2 rounded-md hover:bg-134B70 ${loading ? 'cursor-not-allowed' : ''}`}
+              disabled={loading} // Disable button while loading
             >
-              Iniciar Sesión
+              {loading ? 'Cargando...' : 'Iniciar Sesión'} {/* Show loading text */}
             </button>
           </form>
+
+          {/* Show a loading spinner and message */}
+          {loading && (
+            <div className="mt-4 text-center">
+              <div className="spinner"></div> {/* Spinner */}
+              <p>Cargando, por favor espera...</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

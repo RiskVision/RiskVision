@@ -33,11 +33,7 @@ const ActivosDigitales = () => {
   };
 
   return (
-    <div style={{
-      backgroundImage: `url(${backgroundImage})`, // Establece la imagen como fondo
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }} 
+    <div  
     className="min-h-screen bg-[#201E43] flex flex-col justify-between">
       <BurgerMenu />
       <div className="text-center mt-8">
