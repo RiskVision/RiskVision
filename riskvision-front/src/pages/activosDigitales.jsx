@@ -34,7 +34,7 @@ const ActivosDigitales = () => {
 
   return (
     <div  
-    className="min-h-screen bg-[#201E43] flex flex-col justify-between">
+    className="min-h-screen flex flex-col justify-between">
       <BurgerMenu />
       <div className="text-center mt-8">
         <h1 className="inline-block text-4xl font-bold text-white bg-[#508C9B] p-4 rounded-md">Activos Digitales</h1>

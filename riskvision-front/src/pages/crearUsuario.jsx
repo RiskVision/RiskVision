@@ -12,9 +12,16 @@ const CrearUsuario = () => {
   
   const navigate = useNavigate();
 
+  // Lista de posibles privilegios
+  const availablePrivileges = [
+    { id: 'read', label: 'Leer' },
+    { id: 'write', label: 'Escribir' },
+    { id: 'edit', label: 'Editar' },
+    { id: 'delete', label: 'Eliminar' },
+  ];
+
   const agregarUsuario = async (user) => {
     try {
-      console.log(user)
       const body = {
         user: user.correo,
         password: user.contrasena,
@@ -22,7 +29,6 @@ const CrearUsuario = () => {
         role: user.rol,  // Agrega el rol seleccionado
         privileges: user.privilegios // Agrega los privilegios
       };
-      console.log(body);
       const response = await axios.post("https://riskvision-backend.onrender.com/login/register", body);
       if (response.data.message === "User added successfully") {
         alert(response.data.message);
@@ -98,28 +104,16 @@ const CrearUsuario = () => {
         <div className='div'>
           <label className='label'>Permisos</label>
           <div>
-            <input 
-              className='input' 
-              type="checkbox" 
-              value="permiso1" 
-              onChange={handlePrivilegioChange} 
-            /> Permiso 1
-          </div>
-          <div>
-            <input 
-              className='input' 
-              type="checkbox" 
-              value="permiso2" 
-              onChange={handlePrivilegioChange} 
-            /> Permiso 2
-          </div>
-          <div>
-            <input 
-              className='input' 
-              type="checkbox" 
-              value="permiso3" 
-              onChange={handlePrivilegioChange} 
-            /> Permiso 3
+            {availablePrivileges.map((privilege) => (
+              <div key={privilege.id}>
+                <input 
+                  className='input' 
+                  type="checkbox" 
+                  value={privilege.id} 
+                  onChange={handlePrivilegioChange} 
+                /> {privilege.label}
+              </div>
+            ))}
           </div>
         </div>
         <button type="submit" className="submit-button">Crear Usuario</button>

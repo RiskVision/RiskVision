@@ -1,6 +1,6 @@
 /* Estilos para la página de usuarios (usuarios.jsx) */
 body {
-  background-color: #201E43; /* Cambia el color de fondo de la página aquí */
+  background-color: #EEEEEE; /* Cambia el color de fondo de la página aquí */
 }
 
 .usuarios-container {
@@ -77,7 +77,7 @@ body {
 .h1 {
   font-size: 2rem;
   text-align: center;
-  color: #EEEEEE; /* Cambia el color del texto aquí si es necesario */
+   /* Cambia el color del texto aquí si es necesario */
   margin-bottom: 20px;
 }
 
@@ -140,3 +140,31 @@ body {
   margin: 5px 10px;
 }
 
+.create-button-round {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Hacer el botón redondo */
+  background-color: #508C9B; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; /* Tamaño del símbolo + */
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Posición del botón en la esquina inferior derecha */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  transition: background-color 0.3s ease;
+}
+
+.create-button-round:hover {
+  background-color: #3b6f7e; /* Color más oscuro al hacer hover */
+}
+
+.plus-icon {
+  font-weight: bold;
+  font-size: 32px; /* Aumentar el tamaño del "+" si es necesario */
+  padding-bottom: 8px;
+}

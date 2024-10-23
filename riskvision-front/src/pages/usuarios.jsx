@@ -1,47 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Importa axios
-import '../App2.css';  // Importa el archivo CSS
+import axios from 'axios';
+import '../App2.css';
 import { Link, useNavigate } from 'react-router-dom';
 import UserProfile from '../User-Profile.png'; // Importa la imagen de perfil
 import BurgerMenu from './BurgerMenu';
 
 const Usuarios = () => {
-  const [usuarios, setUsuarios] = useState([]); // Estado local para los usuarios
-  const [loading, setLoading] = useState(true); // Estado para controlar el loading
-  const [error, setError] = useState(''); // Estado para manejar errores
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Función para obtener los usuarios de la API
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get('https://riskvision-backend.onrender.com/login'); // Cambia la URL por tu endpoint
-        setUsuarios(response.data.users); // Actualiza el estado con los usuarios obtenidos
+        const response = await axios.get('https://riskvision-backend.onrender.com/login');
+        setUsuarios(response.data.users);
       } catch (err) {
-        setError('Error al obtener usuarios'); // Maneja el error
+        setError('Error al obtener usuarios');
       } finally {
-        setLoading(false); // Detiene el estado de carga
+        setLoading(false);
       }
     };
 
-    fetchUsuarios(); // Llama a la función cuando el componente se monta
-  }, []); // El array vacío asegura que esto solo se ejecute una vez
+    fetchUsuarios();
+  }, []);
+
+  // Función para manejar el clic en una tarjeta de usuario
+  const handleUserClick = (usuario) => {
+    navigate(`/editar-usuario`, { state: { usuario } }); // Redirige pasando datos del usuario
+  };
 
   return (
     <div>
       <BurgerMenu />
-      <h1 className='h1'>Usuarios</h1>
+      <h1 className='h1 text-black'>Usuarios</h1>
 
-      {/* Muestra el error si hay algún problema */}
       {error && <p className="error">{error}</p>}
 
-      {/* Muestra el loader mientras se cargan los datos */}
       {loading ? (
-        <p>Cargando usuarios...</p>
+        <div className="mt-4 text-center">
+          <div className="spinner"></div>
+          <p>Cargando, por favor espera...</p>
+        </div>
       ) : (
         <div className="usuarios-container">
-          {usuarios.map((usuario, index) => (
-            <div key={index} className="usuario-card">
+          {usuarios.map((usuario) => (
+            <div 
+              key={usuario.user}
+              className="usuario-card"
+              onClick={() => handleUserClick(usuario)} // Pasar los datos del usuario al componente de edición
+            >
               <img src={UserProfile} alt="Perfil de usuario" />
               <h3>{usuario.name}</h3>
               <p>{usuario.role}</p>
@@ -50,8 +59,8 @@ const Usuarios = () => {
         </div>
       )}
       <Link to='/crear-usuario'>
-        <button className="create-button">
-          <p>Crear Usuario</p>
+        <button className="create-button-round">
+          <span className="plus-icon">+</span>
         </button>
       </Link>
     </div>
