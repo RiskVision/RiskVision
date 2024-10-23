@@ -28,8 +28,42 @@ function Home() {
     <div className="h-screen bg-gray-100 relative bg-homebg bg-cover">
       <BurgerMenu /> {/* Use the BurgerMenu component */}
 
+      {/* KPI Section */}
+      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-screen-lg mx-auto my-4">
+        <h2 className="text-2xl font-semibold mb-4">KPI Dashboard</h2>
+        <div className="grid grid-cols-3 gap-4 text-center">
+          {/* Example KPI 1 */}
+          <div className="bg-gray-200 p-4 rounded-md">
+            <h3 className="text-lg font-medium">Vulnerabilidades de interés</h3>
+            {/*<p className="text-2xl font-bold">1,234</p>*/}
+            <div className="mt-4 text-center">
+              <div className="spinner"></div> {/* Spinner */}
+              <p>Cargando</p>
+            </div>
+          </div>
+          {/* Example KPI 2 */}
+          <div className="bg-gray-200 p-4 rounded-md">
+            <h3 className="text-lg font-medium">Recomendaciones</h3>
+            {/*<p className="text-2xl font-bold">567</p>*/}
+            <div className="mt-4 text-center">
+              <div className="spinner"></div> {/* Spinner */}
+              <p>Cargando</p>
+            </div>
+          </div>
+          {/* Example KPI 3 */}
+          <div className="bg-gray-200 p-4 rounded-md">
+            <h3 className="text-lg font-medium">Activos vulnerables</h3>
+            {/*<p className="text-2xl font-bold">12.5%</p>*/}
+            <div className="mt-4 text-center">
+              <div className="spinner"></div> {/* Spinner */}
+              <p>Cargando</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Main content */}
-      <div className="flex flex-col items-center justify-center h-[80vh]">
+      <div className="flex flex-col items-center justify-center h-[70vh]">
         <button className="w-60 h-60 bg-201E43 rounded-full flex items-center justify-center">
           <img src={Logo} alt="logo" className="max-w-full max-h-full p-10" />
         </button>

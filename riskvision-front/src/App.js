@@ -10,6 +10,7 @@ import Reportes from './pages/documentPage';
 import FullDocumentViewer from './pages/fullDocview';
 import Documentos from './pages/documentPage2';
 import Usuarios from './pages/usuarios';
+import EditarUsuario from './pages/modificarUsuario';
 
 function App() {
   const documents = [
@@ -65,6 +66,7 @@ function App() {
           <Route path='/activos-digitales' element={<AD />} />
           <Route path='/usuarios' element={<Usuarios />} />
           <Route path='/crear-usuario' element={<CrearUsuario />} />
+          <Route path='/editar-usuario' element={<EditarUsuario />} />
         </Routes>
     </BrowserRouter>
    </UserProvider>
