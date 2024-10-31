@@ -11,6 +11,7 @@ import FullDocumentViewer from './pages/fullDocview';
 import Documentos from './pages/documentPage2';
 import Usuarios from './pages/usuarios';
 import EditarUsuario from './pages/modificarUsuario';
+import PdfViewer from './pages/pdfBlobView';
 
 function App() {
   const documents = [
@@ -67,6 +68,7 @@ function App() {
           <Route path='/usuarios' element={<Usuarios />} />
           <Route path='/crear-usuario' element={<CrearUsuario />} />
           <Route path='/editar-usuario' element={<EditarUsuario />} />
+          <Route path='/pdfBlobViewer' element={<PdfViewer />} />
         </Routes>
     </BrowserRouter>
    </UserProvider>
