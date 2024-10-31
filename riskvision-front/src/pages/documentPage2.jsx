@@ -27,7 +27,7 @@ function Documentos() {
   return (
     <div className="bg-gray-100 min-h-screen">
       <BurgerMenu />
-      <h1 className="text-3xl font-bold text-center my-6">Reportes</h1>
+      <h1 className="text-3xl font-bold text-center my-6">Documentos de referencia</h1>
       <DocumentList documents={documents} />
     </div>
   );

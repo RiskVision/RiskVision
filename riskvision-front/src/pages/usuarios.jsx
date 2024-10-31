@@ -1,29 +1,68 @@
-import React, { useContext } from 'react';
-import '../App2.css';  // Importa el archivo CSS
-import { Link } from 'react-router-dom';
-import { UserContext } from '../context/UserContext'; // Importa el contexto
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../App2.css';
+import { Link, useNavigate } from 'react-router-dom';
 import UserProfile from '../User-Profile.png'; // Importa la imagen de perfil
 import BurgerMenu from './BurgerMenu';
 
 const Usuarios = () => {
-  const { usuarios } = useContext(UserContext); // Accede a los usuarios desde el contexto
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const response = await axios.get('https://riskvision-backend.onrender.com/login');
+        setUsuarios(response.data.users);
+      } catch (err) {
+        setError('Error al obtener usuarios');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsuarios();
+  }, []);
+
+  // Función para manejar el clic en una tarjeta de usuario
+  const handleUserClick = (usuario) => {
+    navigate(`/editar-usuario`, { state: { usuario } }); // Redirige pasando datos del usuario
+  };
 
   return (
     <div>
       <BurgerMenu />
-      <h1 className='h1'>Usuarios</h1>
-      <div className="usuarios-container">
-        {usuarios.map((usuario, index) => (
-          <div key={index} className="usuario-card">
-            <img src={UserProfile} alt="Perfil de usuario" />
-            <h3>{usuario.nombre}</h3>
-            <p>{usuario.correo}</p>
-          </div>
-        ))}
-      </div>
-      <button className="create-button">
-        <Link to="/crear-usuario">Crear Usuario</Link>
-      </button>
+      <h1 className='h1 text-black'>Usuarios</h1>
+
+      {error && <p className="error">{error}</p>}
+
+      {loading ? (
+        <div className="mt-4 text-center">
+          <div className="spinner"></div>
+          <p>Cargando, por favor espera...</p>
+        </div>
+      ) : (
+        <div className="usuarios-container">
+          {usuarios.map((usuario) => (
+            <div 
+              key={usuario.user}
+              className="usuario-card"
+              onClick={() => handleUserClick(usuario)} // Pasar los datos del usuario al componente de edición
+            >
+              <img src={UserProfile} alt="Perfil de usuario" />
+              <h3>{usuario.name}</h3>
+              <p>{usuario.role}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      <Link to='/crear-usuario'>
+        <button className="create-button-round">
+          <span className="plus-icon">+</span>
+        </button>
+      </Link>
     </div>
   );
 };
