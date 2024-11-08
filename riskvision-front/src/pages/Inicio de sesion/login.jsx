@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import rvlogo from '../logo-white.png';
+import rvlogo from '../../logo-white.png';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -15,7 +15,7 @@ const Login = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await axios.post('https://localhost:8000/login', { user, password });
+      const response = await axios.post('http://localhost:8000/login', { user, password });
       const { token, role, ...rest } = response.data; // Get token, role, and any other properties
 
       if (token) {

@@ -1,17 +1,18 @@
 import './App.css';
-import Login from './pages/login';
+import Login from './pages/Inicio de sesion/login';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
-import Home from './pages/home';
-import AD from './pages/activosDigitales';
-import CrearUsuario from './pages/crearUsuario';
-import Unauthorized from './pages/unauthorized';
-import Reportes from './pages/documentPage';
-import FullDocumentViewer from './pages/fullDocview';
-import Documentos from './pages/documentPage2';
-import Usuarios from './pages/usuarios';
-import EditarUsuario from './pages/modificarUsuario';
-import PdfViewer from './pages/pdfBlobView';
+import Home from './pages/Home/home';
+import AD from './pages/Activos Digitales/activosDigitales';
+import CrearUsuario from './pages/Manejo de usuarios/crearUsuario';
+import Unauthorized from './components/auth/unauthorized';
+import Reportes from './pages/Documentos/documentPage';
+import FullDocumentViewer from './pages/Documentos/fullDocview';
+import Documentos from './pages/Documentos/documentPage2';
+import Usuarios from './pages/Manejo de usuarios/usuarios';
+import EditarUsuario from './pages/Manejo de usuarios/modificarUsuario';
+import MDVisor from './pages/MkdVisor/mdvisor';
+
 
 function App() {
   const documents = [
@@ -68,7 +69,7 @@ function App() {
           <Route path='/usuarios' element={<Usuarios />} />
           <Route path='/crear-usuario' element={<CrearUsuario />} />
           <Route path='/editar-usuario' element={<EditarUsuario />} />
-          <Route path='/pdfBlobViewer' element={<PdfViewer />} />
+          <Route path='/resultados' element={<MDVisor />} />
         </Routes>
     </BrowserRouter>
    </UserProvider>
