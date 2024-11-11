@@ -9,10 +9,7 @@ import html2canvas from 'html2canvas'; // Para convertir el gráfico en imagen
 import './mdvisor.styles.scss';
 
 const MDVisor = () => {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search); // Get query parameters
-  const content = params.get('content') || ''; // Get the 'content' parameter from the query string
-
+  const [content, setContent] = useState(''); // Initialize content state
   const [loading, setLoading] = useState(false); // Para mostrar un estado de carga mientras se genera el reporte
   const chartRef = useRef(null); // Referencia para el gráfico
 
@@ -192,6 +189,14 @@ const MDVisor = () => {
     }
     return paragraphs;
   };
+
+  useEffect(() => {
+    // Get the content from localStorage on component mount
+    const storedContent = localStorage.getItem("markdownContent");
+    if (storedContent) {
+      setContent(storedContent);
+    }
+  }, []);
 
   return (
     <div className="mkdiv container justify-start mx-auto my-6">

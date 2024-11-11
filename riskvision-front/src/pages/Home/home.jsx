@@ -27,11 +27,18 @@ function Home() {
   // Nueva función vacía para una futura llamada
   const handleAIResponse = async () => {
     try{
-      const res = await axios.get('http://localhost:8000/reports/getReport', { prompt: inputValue });
-      setResponse(res.data);
-      if(res.status == 200){
-        handleRedirect('/resultados')
-      }
+      //const res = await axios.get('http://localhost:8000/reports/getReport', { prompt: inputValue });
+      //setResponse(res.data);
+      //if(res.status == 200){
+        const markdown = "# Evaluación de Riesgos en Activos Digitales\nLa evaluación de riesgos es fundamental para anticipar y mitigar posibles amenazas...";
+
+        // Store the Markdown content in localStorage
+        localStorage.setItem("markdownContent", markdown);
+
+        // Redirect to the /resultados route
+        handleRedirect('/resultados');
+
+      //}
      
     }catch(error){
       console.error('Error al procesar la respuesta del AI:',error)

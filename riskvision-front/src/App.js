@@ -69,7 +69,7 @@ function App() {
           <Route path='/usuarios' element={<Usuarios />} />
           <Route path='/crear-usuario' element={<CrearUsuario />} />
           <Route path='/editar-usuario' element={<EditarUsuario />} />
-          <Route path='/resultados/:content' element={<MDVisor />} />
+          <Route path='/resultados' element={<MDVisor />} />
         </Routes>
     </BrowserRouter>
    </UserProvider>
