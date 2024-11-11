@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ReactECharts from 'echarts-for-react';
 import Markdown from "react-markdown";
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, ImageRun } from "docx";
@@ -9,7 +9,10 @@ import html2canvas from 'html2canvas'; // Para convertir el gráfico en imagen
 import './mdvisor.styles.scss';
 
 const MDVisor = () => {
-  const { content } = useParams(); // Access the content param from the route
+  const location = useLocation();
+  const params = new URLSearchParams(location.search); // Get query parameters
+  const content = params.get('content') || ''; // Get the 'content' parameter from the query string
+
   const [loading, setLoading] = useState(false); // Para mostrar un estado de carga mientras se genera el reporte
   const chartRef = useRef(null); // Referencia para el gráfico
 
