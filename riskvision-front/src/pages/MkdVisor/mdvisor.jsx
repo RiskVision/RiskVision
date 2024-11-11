@@ -211,9 +211,16 @@ const MDVisor = () => {
         />
       </div>
 
-      <button onClick={generateReport}>
+      <button
+        onClick={generateReport}
+        className={`${
+            loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
+        } text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform`}
+        disabled={loading}
+        >
         {loading ? 'Generando...' : 'Generar reporte DOCX'}
       </button>
+
     </div>
   );
 };
