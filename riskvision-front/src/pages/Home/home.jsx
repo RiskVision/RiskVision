@@ -27,9 +27,12 @@ function Home() {
   // Nueva función vacía para una futura llamada
   const handleAIResponse = async () => {
     try{
-      //const res = await axios.post('/your-endpoint', { prompt: inputValue });
-      //setResponse(res.data);
-      handleRedirect('/resultados')
+      const res = await axios.get('http://localhost:8000/reports/getReport', { prompt: inputValue });
+      setResponse(res.data);
+      if(res.status == 200){
+        handleRedirect('/resultados')
+      }
+     
     }catch(error){
       console.error('Error al procesar la respuesta del AI:',error)
     }
