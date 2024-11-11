@@ -24,6 +24,18 @@ function Home() {
     }
   };
 
+  // Nueva función vacía para una futura llamada
+  const handleAIResponse = async () => {
+    try{
+      //const res = await axios.post('/your-endpoint', { prompt: inputValue });
+      //setResponse(res.data);
+      handleRedirect('/resultados')
+    }catch(error){
+      console.error('Error al procesar la respuesta del AI:',error)
+    }
+    console.log('Esta función realizará una llamada en el futuro');
+  };
+
   return (
     <div className="h-screen bg-gray-100 relative bg-homebg bg-cover">
       <BurgerMenu /> {/* Use the BurgerMenu component */}
@@ -64,7 +76,7 @@ function Home() {
 
       {/* Main content */}
       <div className="flex flex-col items-center justify-center h-[70vh]">
-        <button className="w-60 h-60 bg-201E43 rounded-full flex items-center justify-center">
+        <button onClick={() => {handleAIResponse()}} className="w-60 h-60 bg-201E43 rounded-full flex items-center justify-center">
           <img src={Logo} alt="logo" className="max-w-full max-h-full p-10" />
         </button>
 
