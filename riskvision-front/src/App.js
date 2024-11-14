@@ -3,7 +3,7 @@ import Login from './pages/Inicio de sesion/login';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import Home from './pages/Home/home';
-import AD from './pages/Activos Digitales/activosDigitales';
+import DataTables from './pages/DataTables';
 import CrearUsuario from './pages/Manejo de usuarios/crearUsuario';
 import Unauthorized from './components/auth/unauthorized';
 import Reportes from './pages/Documentos/documentPage';
@@ -65,11 +65,12 @@ function App() {
           <Route path='/reportes-pasados' element={<Reportes />} />
           <Route path="/document/:id" element={<FullDocumentViewer documents={documents} />} />
           <Route path='/documentos-referencia' element={<Documentos />} />
-          <Route path='/activos-digitales' element={<AD />} />
           <Route path='/usuarios' element={<Usuarios />} />
           <Route path='/crear-usuario' element={<CrearUsuario />} />
           <Route path='/editar-usuario' element={<EditarUsuario />} />
+          <Route path='/data-table' element={<DataTables />} />
           <Route path='/resultados' element={<MDVisor />} />
+
         </Routes>
     </BrowserRouter>
    </UserProvider>

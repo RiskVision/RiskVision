@@ -120,11 +120,11 @@ function Home() {
           <button className="px-6 py-2 bg-508C9B text-white rounded-md">
             Ver Informe
           </button>
-          <button onClick={() => { handleRedirect('/activos-digitales') }} className="px-6 py-2 bg-508C9B text-white rounded-md">
+          <button onClick={() => { handleRedirect('/data-table') }} className="px-6 py-2 bg-508C9B text-white rounded-md">
             Ver Activos Digitales
           </button>
-          <button className="px-6 py-2 bg-508C9B text-white rounded-md">
-            Ver Últimos CVEs
+          <button onClick={() =>{handleRedirect('/reporte')}} className="px-6 py-2 bg-508C9B text-white rounded-md">
+            Reporte
           </button>
         </div>
       </div>

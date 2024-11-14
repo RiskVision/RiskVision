@@ -15,7 +15,7 @@ const Login = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await axios.post('http://localhost:8000/login', { user, password });
+      const response = await axios.post('http://localhost:8000/login/', { user, password });
       const { token, role, ...rest } = response.data; // Get token, role, and any other properties
 
       if (token) {
