@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import BurgerMenu from './BurgerMenu';
+import BurgerMenu from '../components/Menu/BurgerMenu';
 
 const DataTables = () => {
     const [data, setData] = useState([]);

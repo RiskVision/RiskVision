@@ -3,7 +3,7 @@ import Login from './pages/Inicio de sesion/login';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import Home from './pages/Home/home';
-import DataTables from './pages/DataTables';
+import DataTables from './pages/DataTable';
 import CrearUsuario from './pages/Manejo de usuarios/crearUsuario';
 import Unauthorized from './components/auth/unauthorized';
 import Reportes from './pages/Documentos/documentPage';
