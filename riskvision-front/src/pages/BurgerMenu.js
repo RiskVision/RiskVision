@@ -67,13 +67,13 @@ function BurgerMenu() {
             <a onClick={() => redirect('/documentos-referencia')} className="block px-4 py-2 hover:bg-gray-600">
               Documentos
             </a>
-            <a onClick={() => redirect('/activos-digitales')} href="#" className="block px-4 py-2 hover:bg-gray-600">
+            <a onClick={() => redirect('/data-table')} className="block px-4 py-2 hover:bg-gray-600">
               Activos Digitales
             </a>
             <a href="#" className="block px-4 py-2 hover:bg-gray-600">
               Últimos CVEs
             </a>
-            <a onClick={() => redirect('/usuarios')} href="#" className="block px-4 py-2 hover:bg-gray-600">
+            <a onClick={() => redirect('/usuarios')} className="block px-4 py-2 hover:bg-gray-600">
               Gestión de usuarios
             </a>
           </>
