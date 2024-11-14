@@ -11,6 +11,8 @@ import Documentos from './pages/documentPage2';
 import Usuarios from './pages/usuarios';
 import EditarUsuario from './pages/modificarUsuario';
 import DataTables from './pages/DataTable';
+import PdfViewer from './pages/pdfBlobView';
+
 
 function App() {
   const documents = [
@@ -67,6 +69,8 @@ function App() {
           <Route path='/crear-usuario' element={<CrearUsuario />} />
           <Route path='/editar-usuario' element={<EditarUsuario />} />
           <Route path='/data-table' element={<DataTables />} />
+          <Route path='/pdfBlobViewer' element={<PdfViewer />} />
+
         </Routes>
     </BrowserRouter>
    </UserProvider>
