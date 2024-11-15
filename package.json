@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "pdfjs-dist": "^4.7.76"
+    "@pdftron/webviewer": "^11.0.0",
+    "pdfjs-dist": "^4.7.76",
+    "react-markdown": "^9.0.1"
   }
 }

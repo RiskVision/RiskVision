@@ -1,19 +1,20 @@
 import './App.css';
-import Login from './pages/login';
+import Login from './pages/Inicio de sesion/login';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
-import Home from './pages/home';
-import CrearUsuario from './pages/crearUsuario';
-import Unauthorized from './pages/unauthorized';
-import Reportes from './pages/documentPage';
-import FullDocumentViewer from './pages/fullDocview';
-import Documentos from './pages/documentPage2';
-import Usuarios from './pages/usuarios';
-import EditarUsuario from './pages/modificarUsuario';
+import Home from './pages/Home/home';
 import DataTables from './pages/DataTable';
 import PdfViewer from './pages/pdfBlobView';
 import EditAsset from './pages/AD-CRUD/EditAsset';
 import CreateAsset from './pages/AD-CRUD/CreateAsset';
+import CrearUsuario from './pages/Manejo de usuarios/crearUsuario';
+import Unauthorized from './components/auth/unauthorized';
+import Reportes from './pages/Documentos/documentPage';
+import FullDocumentViewer from './pages/Documentos/fullDocview';
+import Documentos from './pages/Documentos/documentPage2';
+import Usuarios from './pages/Manejo de usuarios/usuarios';
+import EditarUsuario from './pages/Manejo de usuarios/modificarUsuario';
+import MDVisor from './pages/MkdVisor/mdvisor';
 
 
 function App() {
@@ -74,6 +75,8 @@ function App() {
           <Route path='/pdfBlobViewer' element={<PdfViewer />} />
           <Route path="/create" element={<CreateAsset />} />
           <Route path="/edit/:id_activo" element={<EditAsset />} />
+          <Route path='/resultados' element={<MDVisor />} />
+
         </Routes>
     </BrowserRouter>
    </UserProvider>

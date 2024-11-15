@@ -1,0 +1,88 @@
+.mkdiv {
+    // Contenedor principal
+    max-width: 800px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #333;
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2a9d8f;
+        border-bottom: 2px solid #e9c46a;
+        padding-bottom: 0.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: #e76f51;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+    }
+
+    a {
+        color: #2a9d8f;
+        text-decoration: underline;
+
+        &:hover {
+            color: #e76f51;
+        }
+    }
+
+    // Estilos para tablas
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: #333;
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e9c46a;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fafafa;
+        }
+    }
+
+    // Cita o blockquote
+    blockquote {
+        border-left: 4px solid #e76f51;
+        color: #555;
+        font-style: italic;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+    }
+    white-space: pre-wrap;
+}

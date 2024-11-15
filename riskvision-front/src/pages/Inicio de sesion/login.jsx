@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import rvlogo from '../logo-white.png';
+import rvlogo from '../../logo-white.png';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {

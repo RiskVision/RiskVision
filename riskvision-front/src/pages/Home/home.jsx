@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import BurgerMenu from './BurgerMenu'; // Import the BurgerMenu component
-import Logo from '../logo-white.png';
+import BurgerMenu from '../../components/Menu/BurgerMenu'; // Import the BurgerMenu component
+import Logo from '../../logo-white.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios
 
@@ -22,6 +22,32 @@ function Home() {
       console.error('There was an error processing the prompt:', error);
       setResponse('Error: Could not process your request.');
     }
+  };
+
+  // Nueva función vacía para una futura llamada
+  const handleAIResponse = async () => {
+    try {
+      // Send the inputValue as a query parameter instead of in the body
+      const res = await axios.get('http://localhost:8000/reports/getReport', {
+        params: { prompt: inputValue }
+      });
+    
+      if (res.status === 200) {
+        const markdown = res.data.data.content;  // Access the content properly
+    
+        console.log(markdown);  // Log to verify the content
+    
+        // Store the Markdown content in localStorage
+        localStorage.setItem("markdownContent", markdown);
+    
+        // Redirect to the /resultados route
+        handleRedirect('/resultados');
+      }
+    
+    }catch(error){
+      console.error('Error al procesar la respuesta del AI:',error)
+    }
+    console.log('Esta función realizará una llamada en el futuro');
   };
 
   return (
@@ -64,7 +90,7 @@ function Home() {
 
       {/* Main content */}
       <div className="flex flex-col items-center justify-center h-[70vh]">
-        <button className="w-60 h-60 bg-201E43 rounded-full flex items-center justify-center">
+        <button onClick={() => {handleAIResponse()}} className="w-60 h-60 bg-201E43 rounded-full flex items-center justify-center">
           <img src={Logo} alt="logo" className="max-w-full max-h-full p-10" />
         </button>
 
