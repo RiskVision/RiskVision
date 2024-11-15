@@ -12,6 +12,8 @@ import Usuarios from './pages/usuarios';
 import EditarUsuario from './pages/modificarUsuario';
 import DataTables from './pages/DataTable';
 import PdfViewer from './pages/pdfBlobView';
+import EditAsset from './pages/AD-CRUD/EditAsset';
+import CreateAsset from './pages/AD-CRUD/CreateAsset';
 
 
 function App() {
@@ -70,7 +72,8 @@ function App() {
           <Route path='/editar-usuario' element={<EditarUsuario />} />
           <Route path='/data-table' element={<DataTables />} />
           <Route path='/pdfBlobViewer' element={<PdfViewer />} />
-
+          <Route path="/create" element={<CreateAsset />} />
+          <Route path="/edit/:id_activo" element={<EditAsset />} />
         </Routes>
     </BrowserRouter>
    </UserProvider>
