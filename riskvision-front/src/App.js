@@ -4,6 +4,9 @@ import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import Home from './pages/Home/home';
 import DataTables from './pages/DataTable';
+import PdfViewer from './pages/pdfBlobView';
+import EditAsset from './pages/AD-CRUD/EditAsset';
+import CreateAsset from './pages/AD-CRUD/CreateAsset';
 import CrearUsuario from './pages/Manejo de usuarios/crearUsuario';
 import Unauthorized from './components/auth/unauthorized';
 import Reportes from './pages/Documentos/documentPage';
@@ -69,6 +72,9 @@ function App() {
           <Route path='/crear-usuario' element={<CrearUsuario />} />
           <Route path='/editar-usuario' element={<EditarUsuario />} />
           <Route path='/data-table' element={<DataTables />} />
+          <Route path='/pdfBlobViewer' element={<PdfViewer />} />
+          <Route path="/create" element={<CreateAsset />} />
+          <Route path="/edit/:id_activo" element={<EditAsset />} />
           <Route path='/resultados' element={<MDVisor />} />
 
         </Routes>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BurgerMenu from '../components/Menu/BurgerMenu';
 
@@ -6,32 +7,7 @@ const DataTables = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        brand: '',
-        model: '',
-        quantity: 0,
-        operatingSystem: '',
-        osVersion: '',
-        responsibleUser: '',
-        supportTeam: '',
-        location: '',
-        deploymentServer: '',
-        acquisitionDate: '',
-        lastAcquisitionDate: '',
-        macAddress: '',
-        ipAddress: '',
-        criticalityLevel: '',
-        assetClassification: '',
-        status: '',
-        recoveryPlan: '',
-        monitoringFrequency: '',
-        securityMonitoring: '',
-        accessAudit: ''
-    });
-    const [editMode, setEditMode] = useState(false);
-    const [currentId, setCurrentId] = useState(null);
+    const navigate = useNavigate();
 
     const fetchData = async () => {
         try {
@@ -48,75 +24,30 @@ const DataTables = () => {
         fetchData();
     }, []);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+    const handleCreate = () => {
+        navigate('/create');
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (editMode) {
-            await axios.put(`http://localhost:8000/api/assets/${currentId}`, formData);
-        } else {
-            await axios.post('http://localhost:8000/api/assets', formData);
-        }
-        setFormData({
-            name: '',
-            description: '',
-            brand: '',
-            model: '',
-            quantity: 0,
-            operatingSystem: '',
-            osVersion: '',
-            responsibleUser: '',
-            supportTeam: '',
-            location: '',
-            deploymentServer: '',
-            acquisitionDate: '',
-            lastAcquisitionDate: '',
-            macAddress: '',
-            ipAddress: '',
-            criticalityLevel: '',
-            assetClassification: '',
-            status: '',
-            recoveryPlan: '',
-            monitoringFrequency: '',
-            securityMonitoring: '',
-            accessAudit: ''
-        });
-        setEditMode(false);
-        setCurrentId(null);
-        fetchData();
+    const handleEdit = (id_activo) => {
+        navigate(`/edit/${id_activo}`);
     };
 
-    const handleEdit = (asset) => {
-        setFormData(asset);
-        setEditMode(true);
-        setCurrentId(asset.id);
-    };
-
-    const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:8000/api/assets/${id}`);
+    const handleDelete = async (id_activo) => { // Cambiado a id_activo
+        await axios.delete(`http://localhost:8000/api/assets/${id_activo}`);
         fetchData();
     };
 
     if (loading) return <p>Cargando datos...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
+
     return (
         <div className="container mx-auto px-4 py-6">
             <BurgerMenu />
             <h1 className="text-2xl font-bold mb-4">Lista de Activos</h1>
-            <form onSubmit={handleSubmit} className="mb-6 grid grid-cols-2 gap-4">
-                
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-                    {editMode ? 'Actualizar' : 'Crear'}
-                </button>
-            </form>
-
+            <button onClick={handleCreate} className="bg-blue-500 text-white px-4 py-2 rounded mb-4">
+                Crear
+            </button>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse border border-gray-200">
                     <thead>
@@ -187,6 +118,10 @@ const DataTables = () => {
 };
 
 export default DataTables;
+
+
+
+
 
 
 
