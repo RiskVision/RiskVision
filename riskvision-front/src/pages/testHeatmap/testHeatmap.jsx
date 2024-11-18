@@ -8,30 +8,41 @@ class Heatmap extends Component {
     this.state = {
       options: {
         chart: {
-          id: "basic-bar"
+          id: "scatter"
         },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-        }
-      },
-      series: [
-        {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
-        }
-      ]
+         xaxis: {
+          tickAmount: 5,
+        },
+        yaxis: {
+          tickAmount: 5,
+        }, 
+       },
+
+      series: [{
+        name: "Riesgo A",
+        data: [
+        [3, 4]]
+      },{
+        name: "Riesgo B",
+        data: [
+        [2, 5]]
+      },{
+        name: "Riesgo C",
+        data: [
+        [1,1]]
+      }]
     };
   }
 
   render() {
     return (
-      <div className="Heatmap">
+      <div className="scatter">
         <div className="row">
           <div className="mixed-chart">
             <Chart
               options={this.state.options}
               series={this.state.series}
-              type="bar"
+              type="scatter"
               width="500"
             />
           </div>
