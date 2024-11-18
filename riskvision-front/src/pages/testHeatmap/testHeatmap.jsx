@@ -1,55 +1,35 @@
-import React, { Component } from "react";
-import Chart from "react-apexcharts";
+import React from 'react';
+import Heatmap from '../../components/charts/heatmap.jsx';
 
-class Heatmap extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      options: {
-        chart: {
-          id: "scatter"
+const HeatmapPage = () => {
+    const data = [
+        {
+            nombreActivo: 'Laptop 1',
+            datos: [
+                [1, 1],
+                [2, 3],
+                [3, 4],
+                [4, 2],
+                [5, 5]
+            ]
         },
-         xaxis: {
-          tickAmount: 5,
-        },
-        yaxis: {
-          tickAmount: 5,
-        }, 
-       },
+        {
+            nombreActivo: 'Laptop 2',
+            datos: [
+                [1, 2],
+                [2, 4],
+                [3, 1],
+                [4, 3],
+                [5, 2]
+            ]
+        }
+    ];
 
-      series: [{
-        name: "Riesgo A",
-        data: [
-        [3, 4]]
-      },{
-        name: "Riesgo B",
-        data: [
-        [2, 5]]
-      },{
-        name: "Riesgo C",
-        data: [
-        [1,1]]
-      }]
-    };
-  }
-
-  render() {
     return (
-      <div className="scatter">
-        <div className="row">
-          <div className="mixed-chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="scatter"
-              width="500"
-            />
-          </div>
+        <div>
+            <Heatmap data={data} />
         </div>
-      </div>
     );
-  }
-}
+};
 
-export default Heatmap;
+export default HeatmapPage;
