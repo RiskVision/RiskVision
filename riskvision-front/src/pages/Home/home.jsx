@@ -4,6 +4,8 @@ import Logo from '../../components/images/logo-white.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios
 
+import {API_URL, markdownTest } from '../../globals';
+
 function Home() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState(''); // State to hold the input value
@@ -24,10 +26,10 @@ function Home() {
     }
   };
 
-  // Nueva función vacía para una futura llamada
+  // Funcion hardcoded para 
   const handleAIResponse = async () => {
     try {
-      // Send the inputValue as a query parameter instead of in the body
+      /* // Send the inputValue as a query parameter instead of in the body
       const res = await axios.get('http://localhost:8000/reports/getReport', {
         params: { prompt: inputValue }
       });
@@ -42,7 +44,12 @@ function Home() {
     
         // Redirect to the /resultados route
         handleRedirect('/resultados');
-      }
+      } */
+
+        console.log(markdownTest);  // Log to verify the content
+
+        // Redirect to the /resultados route with the markdown content as state
+        navigate('/resultados', { state: { markdownContent: markdownTest } });
     
     }catch(error){
       console.error('Error al procesar la respuesta del AI:',error)
