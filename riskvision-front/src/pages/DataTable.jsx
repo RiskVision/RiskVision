@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import BurgerMenu from '../components/menu/burgerMenu';
+import BurgerMenu from '../components/Menu/BurgerMenu';
 
 const DataTables = () => {
     const [data, setData] = useState([]);
