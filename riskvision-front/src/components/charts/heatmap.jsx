@@ -76,6 +76,14 @@ const Heatmap = ({ data }) => {
 
         const gradient = createGradient(ctx);
         const backgroundPlugin = createBackgroundPlugin(gradient);
+
+        // Verificar que `data` es un objeto JSON
+        if (typeof data !== 'object' || data === null) {
+            console.error('Data is not a valid JSON object:', data);
+            return;
+        }
+
+        // Convertir los datos pasados como prop en el formato necesario para Chart.js
         const datasets = createDatasets(data, colors);
 
         myChart = new Chart(ctx, {

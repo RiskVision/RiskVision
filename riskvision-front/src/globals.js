@@ -8,7 +8,6 @@ export const API_URL = `http://${API_IP}:${API_PORT}`;
 
 
 export const markdownTest = `
-# Análisis de Riesgos de Ciberseguridad
 
 Este reporte contiene un análisis de riesgos y amenazas de las vulnerabilidades encontradas y los controles que se recomiendan implementar para los mismos.
 
@@ -22,16 +21,28 @@ A continuación se presenta un análisis detallado de los riesgos identificados:
 - **Riesgo 4**: Descripción del riesgo 4.
 
 \`\`\`json
-{
-  "nombreActivo": "Laptop 1",
-  "datos": [
-    [1, 1],
-    [2, 3],
-    [3, 4],
-    [4, 2],
-    [5, 5]
-  ]
-}
+[
+    {
+        "nombreActivo": "Laptop 1",
+        "datos": [
+            [1, 1],
+            [2, 3],
+            [3, 4],
+            [4, 2],
+            [5, 5]
+        ]
+    },
+    {
+        "nombreActivo": "Laptop 2",
+        "datos": [
+            [1, 2],
+            [2, 4],
+            [3, 1],
+            [4, 3],
+            [5, 2]
+        ]
+    }
+]
 \`\`\`
 
 ## Conclusión

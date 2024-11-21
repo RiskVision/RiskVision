@@ -25,11 +25,17 @@ const MDVisor = () => {
 
   useEffect(() => {
     if (content) {
+      console.log('Contenido de markdown:', content); // Log to verify the content
+
       // Detectar y extraer el JSON de los datos del heatmap
       const jsonMatch = content.match(/```json([\s\S]*?)```/);
       if (jsonMatch) {
         const jsonData = JSON.parse(jsonMatch[1].trim());
-        setHeatmapData(jsonData);
+        if (Array.isArray(jsonData)) {
+          setHeatmapData(jsonData);
+        } else {
+          console.error('Datos no es un array:', jsonData);
+        }
 
         // Remover el JSON del contenido
         const newContent = content.replace(jsonMatch[0], '');

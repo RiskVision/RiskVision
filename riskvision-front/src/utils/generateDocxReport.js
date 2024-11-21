@@ -44,8 +44,26 @@ const convertMarkdownToParagraphs = (content) => {
 
 // Función para generar el reporte DOCX y descargarlo
 export const generateDocxReport = async (content, chartRef) => {
-  const canvas = await html2canvas(chartRef.current);
-  const imageData = canvas.toDataURL("image/png");
+  // Asegúrate de que el canvas se renderice correctamente
+  const canvas = chartRef.current.querySelector('canvas');
+  if (!canvas) {
+    console.error('Canvas not found');
+    return;
+  }
+
+  // Ajustar el tamaño del contenedor del canvas antes de tomar el screenshot
+  const container = chartRef.current;
+  const originalWidth = container.style.width;
+  const originalHeight = container.style.height;
+  container.style.width = '800px'; // Ajusta el ancho del contenedor
+  container.style.height = '600px'; // Ajusta el alto del contenedor
+
+  const screenshotCanvas = await html2canvas(container);
+  const imageData = screenshotCanvas.toDataURL("image/png");
+
+  // Restaurar el tamaño original del contenedor
+  container.style.width = originalWidth;
+  container.style.height = originalHeight;
 
   // Crear el documento DOCX
   const doc = new Document({
