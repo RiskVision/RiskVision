@@ -1,7 +1,6 @@
 import './App.css';
 import Login from './pages/Inicio de sesion/login';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import { UserProvider } from './context/UserContext';
 import Home from './pages/Home/home';
 import DataTables from './pages/DataTable';
 import EditAsset from './pages/AD-CRUD/EditAsset';
@@ -59,7 +58,7 @@ function App() {
     },
   ]
   return (
-    <UserProvider>
+  
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login />} />
@@ -79,7 +78,7 @@ function App() {
 
         </Routes>
     </BrowserRouter>
-   </UserProvider>
+
   );
 }
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../App2.css';
 import { Link, useNavigate } from 'react-router-dom';
-import UserProfile from '../../User-Profile.png'; // Importa la imagen de perfil
-import BurgerMenu from '../../components/Menu/BurgerMenu';
+import UserProfile from '../../components/images/User-Profile.png'; // Importa la imagen de perfil
+import BurgerMenu from '../../components/menu/burgerMenu';
 
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);

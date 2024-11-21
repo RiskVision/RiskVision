@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse'; // Librería para parsear CSV
 import backgroundImage from '../../page-background.jpg';
-import BurgerMenu from '../../components/Menu/BurgerMenu';
+import BurgerMenu from '../../components/menu/burgerMenu';
 const ActivosDigitales = () => {
   const [data, setData] = useState([]);
   const [fileName, setFileName] = useState('');
