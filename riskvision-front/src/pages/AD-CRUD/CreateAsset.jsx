@@ -29,6 +29,7 @@ const CreateAsset = () => {
         monitoreo_seguridad: '',
         auditoria_acceso: ''
     });
+    const token = localStorage.getItem('token')
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -41,7 +42,9 @@ const CreateAsset = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/api/assets', formData);
+            await axios.post('http://localhost:8000/api/assets', formData, {headers:{
+                'Authorization': `Bearer ${token}`
+            }});
             navigate('/data-tables');  // Redireccionamos de vuelta a la página principal después de la creación
         } catch (err) {
             console.error("Error al crear el activo:", err);

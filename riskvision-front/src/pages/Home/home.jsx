@@ -8,6 +8,7 @@ function Home() {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState(''); // State to hold the input value
   const [response, setResponse] = useState(''); // State to hold the response from the server
+  const token = localStorage.getItem('token')
 
   const handleRedirect = (url) => {
     navigate(url);
@@ -29,7 +30,10 @@ function Home() {
     try {
       // Send the inputValue as a query parameter instead of in the body
       const res = await axios.get('http://localhost:8000/reports/getReport', {
-        params: { prompt: inputValue }
+        params: { prompt: inputValue },
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
     
       if (res.status === 200) {

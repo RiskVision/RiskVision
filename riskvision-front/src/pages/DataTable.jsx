@@ -8,10 +8,15 @@ const DataTables = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const token = localStorage.getItem('token')
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/assets');
+            const response = await axios.get('http://localhost:8000/api/assets',{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             setData(response.data);
             setLoading(false);
         } catch (err) {
@@ -33,7 +38,13 @@ const DataTables = () => {
     };
 
     const handleDelete = async (id_activo) => { // Cambiado a id_activo
-        await axios.delete(`http://localhost:8000/api/assets/${id_activo}`);
+        await axios.delete(`http://localhost:8000/api/assets/${id_activo}`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+        );
         fetchData();
     };
 

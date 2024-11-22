@@ -30,12 +30,17 @@ const EditAsset = () => {
         monitoreo_seguridad: '',
         auditoria_acceso: ''
     });
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
         // Cargamos los datos del activo usando el id_activo de la URL
         const fetchAsset = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/assets/${id_activo}`);
+                const response = await axios.get(`http://localhost:8000/api/assets/${id_activo}`,{
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 setFormData(response.data);
             } catch (err) {
                 console.error("Error al cargar el activo:", err);
@@ -55,7 +60,11 @@ const EditAsset = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:8000/api/assets/${id_activo}`, formData);
+            await axios.put(`http://localhost:8000/api/assets/${id_activo}`, formData,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             navigate('/data-tables');  // Redireccionamos de vuelta a la página principal después de la edición
         } catch (err) {
             console.error("Error al actualizar el activo:", err);

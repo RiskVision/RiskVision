@@ -9,6 +9,7 @@ const CrearUsuario = () => {
   const [contrasena, setContrasena] = useState('');
   const [privilegios, setPrivilegios] = useState([]); // Estado para los privilegios seleccionados
   const [rol, setRol] = useState('default'); // Estado para el rol
+  const token = localStorage.getItem('token');
   
   const navigate = useNavigate();
 
@@ -29,7 +30,11 @@ const CrearUsuario = () => {
         role: user.rol,  // Agrega el rol seleccionado
         privileges: user.privilegios // Agrega los privilegios
       };
-      const response = await axios.post("https://riskvision-backend.onrender.com/login/register", body);
+      const response = await axios.post("https://riskvision-backend.onrender.com/login/register", body,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (response.data.message === "User added successfully") {
         alert(response.data.message);
         navigate("/usuarios"); // Redirige a la lista de usuarios

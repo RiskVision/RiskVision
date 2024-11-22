@@ -6,6 +6,7 @@ const EditarUsuario = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { usuario } = location.state; // Obtener los datos del usuario pasado desde la lista
+  const token = localStorage.getItem('token'); // Obtener el token de autenticación
 
   // Estado para manejar los datos editables del usuario
   const [formData, setFormData] = useState({
@@ -48,6 +49,10 @@ const EditarUsuario = () => {
       await axios.put(`http://localhost:8000/login`, {
         user: usuario.user,
         updates: formData
+      },{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       }); // Ajusta la URL
       navigate('/usuarios'); // Redirige de vuelta a la lista de usuarios
     } catch (err) {
@@ -60,7 +65,10 @@ const EditarUsuario = () => {
     console.log("Usuario a borrar:", usuario.user); // Verifica que el ID del usuario esté presente
     try {
         await axios.delete(`http://localhost:8000/login`, {
-            data: { user: usuario.user } // Asegúrate de usar "data" para enviar el cuerpo
+            data: { user: usuario.user },
+            headers:{
+              'Authorization': `Bearer ${token}`
+            } // Asegúrate de usar "data" para enviar el cuerpo
         });
         navigate('/usuarios');
     } catch (err) {

@@ -10,11 +10,16 @@ const Usuarios = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get('https://riskvision-backend.onrender.com/login');
+        const response = await axios.get('http://localhost:8000/login',{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         setUsuarios(response.data.users);
       } catch (err) {
         setError('Error al obtener usuarios');
