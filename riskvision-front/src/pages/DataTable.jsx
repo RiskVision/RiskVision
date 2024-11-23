@@ -118,12 +118,3 @@ const DataTables = () => {
 };
 
 export default DataTables;
-
-
-
-
-
-
-
-
-
