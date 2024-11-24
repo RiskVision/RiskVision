@@ -1,31 +1,9 @@
 import React, { useEffect } from 'react';
 import { Chart, registerables } from 'chart.js';
+import { pastelColors } from '../../globals.js';
 
 Chart.register(...registerables);
 
-// Función para generar un color aleatorio en formato rgba, omitiendo verde, amarillo y rojo
-const getRandomColor = () => {
-    let r, g, b;
-    do {
-        r = Math.floor(Math.random() * 256);
-        g = Math.floor(Math.random() * 256);
-        b = Math.floor(Math.random() * 256);
-    } while ((r === 0 && g === 255 && b === 0) || // Verde
-    (r === 255 && g === 255 && b === 0) || // Amarillo
-    (r === 255 && g === 0 && b === 0) || // Rojo
-    (r === 255 && g === 165 && b === 0)); // Naranja
-              // Rojo
-    return `rgba(${r}, ${g}, ${b}, 1)`;
-};
-
-// Función para generar una lista de colores aleatorios
-const generateRandomColors = (numColors) => {
-    const colors = [];
-    for (let i = 0; i < numColors; i++) {
-        colors.push(getRandomColor());
-    }
-    return colors;
-};
 
 const createGradient = (ctx) => {
     const gradient = ctx.createLinearGradient(0, ctx.canvas.height, ctx.canvas.width, 0);
@@ -63,16 +41,26 @@ const createDatasets = (data, colors) => {
 const createScaleOptions = (title) => {
     return {
         title: {
+            color: 'black',
             display: true,
-            text: title
+            text: title,
+            font: {
+                size: 16, // Increase font size
+                weight: 'bold' // Make font black
+            }
         },
         min: 0,
         max: 6,
         ticks: {
+            color: 'black', // Make ticks black
+            font: {
+                size: 12, // Increase font size for ticks
+                weight: 'bold' // Make font bold for ticks
+            },
             callback: tickCallback
         }
     };
-};
+}
 
 const tickCallback = (value) => {
     if (value === 0 || value === 6) {
@@ -98,8 +86,9 @@ const Heatmap = ({ data }) => {
             console.error('Data is not a valid JSON object:', data);
             return;
         }
-        // Generar colores aleatorios
-        const colors = generateRandomColors(data.length);
+        
+        // Use the imported pastel colors
+        const colors = pastelColors;
 
         // Convertir los datos pasados como prop en el formato necesario para Chart.js
         const datasets = createDatasets(data, colors);
@@ -117,6 +106,13 @@ const Heatmap = ({ data }) => {
                 plugins: {
                     legend: {
                         display: true,
+                        labels: {
+                            color: 'black', // Make legend labels black
+                            font: {
+                                size: 14, // Increase font size for legend
+                                weight: 'bold' // Make font bold for legend
+                            }
+                        }
                     },
                     customCanvasBackgroundColor: backgroundPlugin
                 }

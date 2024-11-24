@@ -4,7 +4,7 @@ import Heatmap from '../../components/charts/heatmap.jsx';
 const HeatmapPage = () => {
     const data = [
         {
-            nombreActivo: 'Laptop 1',
+            riesgo: 'Laptop 1',
             datos: [
                 [1, 1],
                 [2, 3],
@@ -14,7 +14,7 @@ const HeatmapPage = () => {
             ]
         },
         {
-            nombreActivo: 'Laptop 2',
+            riesgo: 'Laptop 2',
             datos: [
                 [1, 2],
                 [2, 4],
