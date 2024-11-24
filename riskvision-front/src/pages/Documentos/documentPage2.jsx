@@ -1,6 +1,6 @@
 import React from 'react';
-import DocumentList from '../../components/documents/documentList';
-import BurgerMenu from '../../components/menu/burgerMenu';
+import DocumentList from '../../components/Documents/DocumentList';
+import BurgerMenu from '../../components/Menu/BurgerMenu';
 
 function Documentos() {
   const documents = [

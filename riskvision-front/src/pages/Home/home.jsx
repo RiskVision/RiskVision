@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BurgerMenu from '../../components/menu/burgerMenu'; // Import the BurgerMenu component
+import BurgerMenu from '../../components/Menu/BurgerMenu'; // Import the BurgerMenu component
 import Logo from '../../components/images/logo-white.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios
