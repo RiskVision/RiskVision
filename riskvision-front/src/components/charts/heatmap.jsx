@@ -3,19 +3,35 @@ import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 
-const colors = [
-    'rgba(255, 99, 132, 1)', // Rojo sólido
-    'rgba(54, 162, 235, 1)', // Azul sólido
-    'rgba(75, 192, 192, 1)', // Verde sólido
-    'rgba(255, 206, 86, 1)', // Amarillo sólido
-    'rgba(153, 102, 255, 1)' // Púrpura sólido
-];
+// Función para generar un color aleatorio en formato rgba, omitiendo verde, amarillo y rojo
+const getRandomColor = () => {
+    let r, g, b;
+    do {
+        r = Math.floor(Math.random() * 256);
+        g = Math.floor(Math.random() * 256);
+        b = Math.floor(Math.random() * 256);
+    } while ((r === 0 && g === 255 && b === 0) || // Verde
+    (r === 255 && g === 255 && b === 0) || // Amarillo
+    (r === 255 && g === 0 && b === 0) || // Rojo
+    (r === 255 && g === 165 && b === 0)); // Naranja
+              // Rojo
+    return `rgba(${r}, ${g}, ${b}, 1)`;
+};
+
+// Función para generar una lista de colores aleatorios
+const generateRandomColors = (numColors) => {
+    const colors = [];
+    for (let i = 0; i < numColors; i++) {
+        colors.push(getRandomColor());
+    }
+    return colors;
+};
 
 const createGradient = (ctx) => {
     const gradient = ctx.createLinearGradient(0, ctx.canvas.height, ctx.canvas.width, 0);
     gradient.addColorStop(0, 'green');
     gradient.addColorStop(0.5, 'yellow');
-    gradient.addColorStop(1, 'red');
+    gradient.addColorStop(1, 'red'); // Rojo pastel
     return gradient;
 };
 
@@ -35,7 +51,7 @@ const createBackgroundPlugin = (gradient) => {
 
 const createDatasets = (data, colors) => {
     return data.map((item, index) => ({
-        label: item.nombreActivo,
+        label: item.riesgo,
         data: item.datos.map(d => ({ x: d[0], y: d[1] })),
         backgroundColor: colors[index % colors.length], // Asignar un color diferente a cada serie
         pointRadius: 10,
@@ -72,10 +88,20 @@ const Heatmap = ({ data }) => {
 
         if (Chart.getChart('myChart')) {
             Chart.getChart('myChart').destroy();
-        }
+        } 
 
         const gradient = createGradient(ctx);
         const backgroundPlugin = createBackgroundPlugin(gradient);
+
+        // Verificar que `data` es un objeto JSON
+        if (typeof data !== 'object' || data === null) {
+            console.error('Data is not a valid JSON object:', data);
+            return;
+        }
+        // Generar colores aleatorios
+        const colors = generateRandomColors(data.length);
+
+        // Convertir los datos pasados como prop en el formato necesario para Chart.js
         const datasets = createDatasets(data, colors);
 
         myChart = new Chart(ctx, {
@@ -106,8 +132,8 @@ const Heatmap = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={{ width: '400px', height: '400px', margin: '0 auto' }}>
-            <canvas id="myChart" width="400" height="400"></canvas>
+        <div style={{ width: '700px', height: '500px', margin: '0 auto' }}>
+            <canvas id="myChart" width="700" height="500"></canvas>
         </div>
     );
 };

@@ -137,4 +137,19 @@ const EditAsset = () => {
     );
 };
 
+=======
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+const EditAsset = () => {
+    const { id_activo } = useParams();  // Obtenemos id_activo desde los parámetros de la URL
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        id_activo: '',
+        nombre_activo: '',
+        descripcion: '',
+        marca: '',
+        modelo: '',
+
 export default EditAsset;
