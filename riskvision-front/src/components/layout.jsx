@@ -14,7 +14,11 @@ import {
   SidebarMenuButton,
   SidebarProvider,
   SidebarTrigger,
+  SidebarMenuSub,
 } from "./ui/sidebar"
+import { Collapsible } from './ui/collapsible'
+import { CollapsibleTrigger } from './ui/collapsible'
+import { CollapsibleContent } from './ui/collapsible'
 
 const Layout = () => {
   const location = useLocation()
@@ -30,6 +34,7 @@ const Layout = () => {
     { name: 'Crear Activo', icon: Plus, path: '/create' },
     { name: 'Resultados', icon: BarChart, path: '/resultados' },
     { name: 'Heatmap', icon: BarChart, path: '/heatmap' },
+    { name: 'Documentos', icon: FileText, path: '/blobstorage' }
   ]
 
   return (
@@ -44,6 +49,21 @@ const Layout = () => {
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
+              <Collapsible defaultOpen className='group/collapsible'>
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      <SidebarMenuItem>
+                        Hola
+                      </SidebarMenuItem>
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </Collapsible>
+
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.name}>
                   <SidebarMenuButton asChild isActive={location.pathname === item.path}>

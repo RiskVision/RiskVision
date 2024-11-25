@@ -15,6 +15,7 @@ import EditarUsuario from './pages/Manejo de usuarios/modificarUsuario';
 import MDVisor from './pages/MkdVisor/mdvisor';
 import Heatmap from './pages/testHeatmap/testHeatmap';
 import Layout from './components/layout';
+import FileManager from './pages/BlobStorage/filemanager';
 
 function App() {
     const documents = [
@@ -77,6 +78,7 @@ function App() {
                     <Route path='/crear-usuario' element={<CrearUsuario />} />
                     <Route path='/editar-usuario' element={<EditarUsuario />} />
                     <Route path='/data-table' element={<DataTables />} />
+                    <Route path='/blobstorage' element={<FileManager/>} />
                     <Route path='/create' element={<CreateAsset />} />
                     <Route path='/edit/:id_activo' element={<EditAsset />} />
                     <Route path='/resultados' element={<MDVisor />} />
