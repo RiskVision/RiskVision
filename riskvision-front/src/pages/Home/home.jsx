@@ -50,13 +50,14 @@ function Home() {
         <div className='space-y-6'>
             <section className='text-center'>
                 <h1 className='text-3xl font-bold text-gray-800 mb-4'>
-                    Bienvenido al Dashboard de RiskVision
+                    Bienvenido a RiskVision
                 </h1>
                 <p className='text-xl text-gray-600 mb-8'>
-                    Tu centro de análisis de ciberseguridad impulsado por IA
+                    Tu centro de análisis de riesgos impulsado por IA
                 </p>
                 <Button onClick={() => {handleAIResponse()}}
-                    className='text-lg px-8 py-4 bg-blue-600 text-white rounded-lg shadow-[5px_5px_10px_#b8b9be,-5px_-5px_10px_#ffffff] hover:shadow-[inset_5px_5px_10px_#4a4b4e,inset_-5px_-5px_10px_#ffffff] transition-all duration-300'
+                    className='text-lg px-8 py-4 bg-blue-900 text-white rounded-lg shadow-[2px_2px_6px_#2f3238,inset_-4px_-4px_8px_#1c1f24] hover:bg-blue-800 hover:shadow-[inset_2px_2px_6px_#2f3238,inset_-4px_-4px_8px_#1c1f24] transition-all duration-300'
+
                 >
                     <Link to='/resultados'>Generar Nuevo Reporte</Link>
                 </Button>

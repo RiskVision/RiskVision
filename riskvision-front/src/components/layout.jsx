@@ -38,7 +38,7 @@ const Layout = () => {
       <div className="flex h-screen bg-gray-100 w-screen">
         <Sidebar defaultOpen={true} className="border-r">
           <SidebarHeader className="p-4">
-            <Link to="/home" className="flex items-center space-x-2 text-blue-600">
+            <Link to="/home" className="flex items-center space-x-2 text-blue-900">
               <img src={Logo} alt="RiskVision Logo" className="h-14 w-14" /> {/* Usar el logo en lugar del ícono Shield */}
               <span className="text-2xl font-bold">RiskVision</span>
             </Link>
