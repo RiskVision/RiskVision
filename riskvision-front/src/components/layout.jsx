@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { Shield, Home, FileText, Database, Users, Plus, Edit, Table, BarChart, Menu, ChevronLeft } from 'lucide-react'
+import { FileText, Home, Database, Users, Plus, Edit, Table, BarChart, Menu, ChevronLeft } from 'lucide-react'
 import { Button } from "./ui/button"
 import {
   Sidebar,
@@ -16,6 +16,8 @@ import {
   SidebarTrigger,
 } from "./ui/sidebar"
 
+import Logo from '../components/images/logo-blue-no-name.png'; // Importar el logo
+
 const Layout = () => {
   const location = useLocation()
 
@@ -28,8 +30,7 @@ const Layout = () => {
     { name: 'Editar Usuario', icon: Edit, path: '/editar-usuario' },
     { name: 'Data Tables', icon: Table, path: '/data-table' },
     { name: 'Crear Activo', icon: Plus, path: '/create' },
-    { name: 'Resultados', icon: BarChart, path: '/resultados' },
-    { name: 'Heatmap', icon: BarChart, path: '/heatmap' },
+    { name: 'Resultados', icon: BarChart, path: '/resultados' }
   ]
 
   return (
@@ -37,8 +38,8 @@ const Layout = () => {
       <div className="flex h-screen bg-gray-100 w-screen">
         <Sidebar defaultOpen={true} className="border-r">
           <SidebarHeader className="p-4">
-            <Link to="/home" className="flex items-center space-x-2 text-blue-600">
-              <Shield className="h-8 w-8" />
+            <Link to="/home" className="flex items-center space-x-2 text-blue-900">
+              <img src={Logo} alt="RiskVision Logo" className="h-14 w-14" /> {/* Usar el logo en lugar del ícono Shield */}
               <span className="text-2xl font-bold">RiskVision</span>
             </Link>
           </SidebarHeader>
@@ -87,6 +88,5 @@ const Layout = () => {
     </SidebarProvider>
   )
 }
-
 
 export default Layout

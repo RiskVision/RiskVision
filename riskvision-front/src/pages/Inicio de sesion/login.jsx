@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import rvlogo from '../../components/images/logo-white.png';
+import rvlogo from '../../components/images/logo-blue.png';
 import { useNavigate } from 'react-router-dom';
+import './login.css'; // Importar la clase CSS
 
 const Login = () => {
   const [user, setUser] = useState('');
@@ -36,17 +37,17 @@ const Login = () => {
   };
 
   return (
-    <div className='bg-banner bg-cover'>
-      <div className="flex items-center justify-center min-h-screen text-white">
-        <div className="backdrop-blur-md bg-white/0 p-6 rounded-lg w-96 shadow-lg ring-black/5">
-          <div className='flex items-center'>
-            <img src={rvlogo} alt='logo' width={100}/>
-            <h2 className="text-2xl font-bold mb-4 text-center">Iniciar Sesión</h2>
+    <div className='bg-banner'>
+      <div className="flex items-center justify-center min-h-screen text-gray-800 relative z-10">
+        <div className="backdrop-blur-md bg-white p-6 rounded-lg w-96 shadow-lg ring-black/5"> {/* Cambiar el fondo a blanco */}
+          <div className='flex items-center justify-center mb-4'>
+            <img src={rvlogo} alt='logo' width={120}/>
           </div>
+          <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Iniciar Sesión</h2> {/* Cambiar el color del texto a gris oscuro */}
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block" htmlFor="user">Usuario</label>
+              <label className="block text-gray-800" htmlFor="user">Usuario</label> {/* Cambiar el color del texto a gris oscuro */}
               <input
                 type="text"
                 id="user"
@@ -58,7 +59,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block" htmlFor="password">Contraseña</label>
+              <label className="block text-gray-800" htmlFor="password">Contraseña</label> {/* Cambiar el color del texto a gris oscuro */}
               <input
                 type="password"
                 id="password"
@@ -71,7 +72,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className={`backdrop-blur-md w-full bg-508C9B text-white py-2 rounded-md hover:bg-134B70 ${loading ? 'cursor-not-allowed' : ''}`}
+              className={`backdrop-blur-md w-full bg-blue-950 text-white py-2 rounded-md hover:bg-blue-700 ${loading ? 'cursor-not-allowed' : ''}`}
               disabled={loading} // Disable button while loading
             >
               {loading ? 'Cargando...' : 'Iniciar Sesión'} {/* Show loading text */}
