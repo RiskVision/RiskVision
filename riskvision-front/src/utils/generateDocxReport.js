@@ -41,9 +41,26 @@ const convertMarkdownToParagraphs = (content) => {
         })
       );
     } else if (line.trim() !== "") {
+      const textRuns = [];
+      const boldRegex = /\*\*(.*?)\*\*/g;
+      let lastIndex = 0;
+      let match;
+
+      while ((match = boldRegex.exec(line)) !== null) {
+        if (match.index > lastIndex) {
+          textRuns.push(new TextRun(line.substring(lastIndex, match.index)));
+        }
+        textRuns.push(new TextRun({ text: match[1], bold: true }));
+        lastIndex = boldRegex.lastIndex;
+      }
+
+      if (lastIndex < line.length) {
+        textRuns.push(new TextRun(line.substring(lastIndex)));
+      }
+
       paragraphs.push(
         new Paragraph({
-          children: [new TextRun(line)],
+          children: textRuns,
           spacing: { after: 200 },
         })
       );
@@ -123,15 +140,6 @@ export const generateDocxReport = async (content, chartRef) => {
             spacing: { after: 200 },
           }),
           ...convertMarkdownToParagraphs(content),
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "Conclusión del análisis de riesgos.",
-                bold: true,
-                italics: true,
-              }),
-            ],
-          }),
         ],
       },
     ],

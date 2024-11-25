@@ -40,7 +40,7 @@ function Home() {
     const handleAIResponse = async () => {
         try {
             // Redirigir a la ruta /resultados
-            navigate('/resultados', { state: { markdownContent: markdownTests[2] } });
+            navigate('/resultados', { state: { markdownContent: markdownTests[3] } });
         } catch (error) {
             console.error('Error al procesar la respuesta del AI:', error);
         }
