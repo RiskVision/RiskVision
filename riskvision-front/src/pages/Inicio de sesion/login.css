@@ -1,5 +1,5 @@
 .bg-banner {
-  background-image: url('../../components/images/banner.png'); /* Reemplaza con la ruta de tu imagen */
+  background-image: url('../../components/images/login-bg.png'); /* Reemplaza con la ruta de tu imagen */
   background-size: cover;
   background-position: center;
   position: relative;
