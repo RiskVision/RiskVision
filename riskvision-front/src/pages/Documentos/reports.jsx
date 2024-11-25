@@ -8,10 +8,10 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/dialog"
 import { toast, useToast } from "../../hooks/use-toast"
 import { EyeIcon, FileIcon, FolderIcon, TrashIcon, UploadIcon } from 'lucide-react'
-import { listFiles, uploadFile, deleteFile, testConnection} from '../../client/blobStorage/blobStorage.methods'
+import { listFiles, uploadFile, deleteFile, testConnection} from '../../client/blobStorage/blobStorageReportes.methods'
 import { FilePreview } from '../../components/file-preview'
 
-export default function FileManager() {
+export default function ReportesPasados() {
   const [files, setFiles] = useState([])
   const [currentPath, setCurrentPath] = useState('')
   const [isLoading, setIsLoading] = useState(false)

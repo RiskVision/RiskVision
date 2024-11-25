@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/storage';
+const API_BASE_URL = 'http://localhost:8000/reportes-pasados';
 
 export async function listFiles(path) {
   const encodedPath = path ? encodeURIComponent(path) : '';

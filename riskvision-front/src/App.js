@@ -7,7 +7,7 @@ import EditAsset from './pages/AD-CRUD/EditAsset';
 import CreateAsset from './pages/AD-CRUD/CreateAsset';
 import CrearUsuario from './pages/Manejo de usuarios/crearUsuario';
 import Unauthorized from './components/auth/unauthorized';
-import Reportes from './pages/Documentos/documentPage';
+import Reportes from './pages/Documentos/docs';
 import FullDocumentViewer from './pages/Documentos/fullDocview';
 import Documentos from './pages/Documentos/documentPage2';
 import Usuarios from './pages/Manejo de usuarios/usuarios';
@@ -16,6 +16,8 @@ import MDVisor from './pages/MkdVisor/mdvisor';
 import Heatmap from './pages/testHeatmap/testHeatmap';
 import Layout from './components/layout';
 import FileManager from './pages/BlobStorage/filemanager';
+import FileManagerEmpresa from './pages/Documentos/filemanager-empresa'
+import ReportesPasados from './pages/Documentos/reports'
 
 function App() {
     const documents = [
@@ -71,7 +73,7 @@ function App() {
                     <Route path='/doe' element={<div className='space-y-6 w-screen'>
                       hola
                     </div>} />
-                    <Route path='/reportes-pasados' element={<Reportes />} />
+                    <Route path='/reportes-pasados' element={<ReportesPasados />} />
                     <Route path='/document/:id' element={<FullDocumentViewer />} />
                     <Route path='/documentos-referencia' element={<Documentos />} />
                     <Route path='/usuarios' element={<Usuarios />} />
@@ -79,6 +81,7 @@ function App() {
                     <Route path='/editar-usuario' element={<EditarUsuario />} />
                     <Route path='/data-table' element={<DataTables />} />
                     <Route path='/blobstorage' element={<FileManager/>} />
+                    <Route path='/blobstorage-empresa' element={<FileManagerEmpresa/>} />
                     <Route path='/create' element={<CreateAsset />} />
                     <Route path='/edit/:id_activo' element={<EditAsset />} />
                     <Route path='/resultados' element={<MDVisor />} />

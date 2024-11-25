@@ -11,7 +11,7 @@ import { EyeIcon, FileIcon, FolderIcon, TrashIcon, UploadIcon } from 'lucide-rea
 import { listFiles, uploadFile, deleteFile, testConnection} from '../../client/blobStorage/blobStorage.methods'
 import { FilePreview } from '../../components/file-preview'
 
-export default function FileManager() {
+export default function FileManagerEmpresa() {
   const [files, setFiles] = useState([])
   const [currentPath, setCurrentPath] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -117,7 +117,7 @@ export default function FileManager() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Administrador de Archivos</h1>
+      <h1 className="text-2xl font-bold mb-4">Administrador de Archivos Empresa</h1>
       {renderBreadcrumbs()}
       <div className="my-4">
         <Input

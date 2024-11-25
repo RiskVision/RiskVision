@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Shield, Home, FileText, Database, Users, Plus, Edit, Table, BarChart, Menu, ChevronLeft } from 'lucide-react'
 import { Button } from "./ui/button"
 import {
@@ -26,15 +26,13 @@ const Layout = () => {
   const menuItems = [
     { name: 'Home', icon: Home, path: '/home' },
     { name: 'Reportes Pasados', icon: FileText, path: '/reportes-pasados' },
-    { name: 'Documentos Referencia', icon: Database, path: '/documentos-referencia' },
+    { name: 'Marcos de Referencia', icon: Database, path: '/blobstorage' },
+    { name: 'Documentos Empresa', icon: FileText, path: '/blobstorage-empresa' },
     { name: 'Usuarios', icon: Users, path: '/usuarios' },
     { name: 'Crear Usuario', icon: Plus, path: '/crear-usuario' },
     { name: 'Editar Usuario', icon: Edit, path: '/editar-usuario' },
-    { name: 'Data Tables', icon: Table, path: '/data-table' },
+    { name: 'Activos Digitales', icon: Table, path: '/data-table' },
     { name: 'Crear Activo', icon: Plus, path: '/create' },
-    { name: 'Resultados', icon: BarChart, path: '/resultados' },
-    { name: 'Heatmap', icon: BarChart, path: '/heatmap' },
-    { name: 'Documentos', icon: FileText, path: '/blobstorage' }
   ]
 
   return (
@@ -52,7 +50,12 @@ const Layout = () => {
               <Collapsible defaultOpen className='group/collapsible'>
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
-                    <SidebarMenuButton />
+                    <SidebarMenuButton>
+                    <Link to="/blobstorage" className="flex items-center space-x-2 w-full">
+                      <Table className="h-5 w-5" />
+                      <span>Hola</span>
+                    </Link>
+                    </SidebarMenuButton>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenuSub>
