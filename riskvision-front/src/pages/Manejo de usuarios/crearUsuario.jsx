@@ -29,7 +29,7 @@ const CrearUsuario = () => {
         role: user.rol,  // Agrega el rol seleccionado
         privileges: user.privilegios // Agrega los privilegios
       };
-      const response = await axios.post("https://riskvision-backend.onrender.com/login/register", body);
+      const response = await axios.post("http://localhost:8000/login/register", body);
       if (response.data.message === "User added successfully") {
         alert(response.data.message);
         navigate("/usuarios"); // Redirige a la lista de usuarios

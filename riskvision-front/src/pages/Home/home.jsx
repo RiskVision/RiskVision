@@ -25,7 +25,7 @@ import {
     CheckCircle,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { markdownTests } from '../../globals';
+import runAI from '../../client/ai/ai.GET';
 
 function Home() {
     const navigate = useNavigate();
@@ -39,8 +39,8 @@ function Home() {
     // Nueva función vacía para una futura llamada
     const handleAIResponse = async () => {
         try {
-            // Redirigir a la ruta /resultados
-            navigate('/resultados', { state: { markdownContent: markdownTests[4] } });
+            aiResponse = await runAI()// Redirigir a la ruta /resultados
+            navigate('/resultados', { state: { markdownContent: aiResponse } });
         } catch (error) {
             console.error('Error al procesar la respuesta del AI:', error);
         }

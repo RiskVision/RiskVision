@@ -14,7 +14,7 @@ const Usuarios = () => {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await axios.get('https://riskvision-backend.onrender.com/login');
+        const response = await axios.get('http://localhost:8000/login');
         setUsuarios(response.data.users);
       } catch (err) {
         setError('Error al obtener usuarios');
